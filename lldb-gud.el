@@ -967,9 +967,9 @@ SKIP is the number of chars to skip on each line, it defaults to 0."
                           gud-marker-acc start)
             ;; (lldb) frame select -r 1
             ;; frame #1: 0x0000000100000e09 a.out`main + 25 at main.c:44
-            (string-match "^frame.* at \\([^:\n]*\\):\\([0-9]*\\)\n"
+            (string-match "^(lldb) frame.* at \\([^:\n]*\\):\\([0-9]*\\)\n"
                            gud-marker-acc start))
-      ;(message "gud-marker-acc matches our pattern....")
+      ;(message "gud-marker-acc matches our pattern.... -> %s %s:%s" gud-marker-acc (match-string 1 gud-marker-acc)(match-string 2 gud-marker-acc))
       (setq gud-last-frame
             (cons (match-string 1 gud-marker-acc)
                   (string-to-number (match-string 2 gud-marker-acc)))
